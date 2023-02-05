@@ -1,0 +1,108 @@
+body {
+	font-family: "sans-serif";
+	background-image: url('wood.webp');
+	background-size: contain;
+}
+
+#move-text {
+	display: grid;
+	align-items: center;
+	justify-items: center; /* adjusted */
+	height: 20%;
+	background-image: url('wood-screen.jpg');
+	color: #e8d18c;
+	margin: 10px;
+	margin-top: 50px;
+	margin-bottom: 60px;
+	border: none;
+	border-radius: 20px;
+}
+
+#move-text-inside {
+	font-size: 6em;
+}
+
+.buttons-row {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+}
+
+.button {
+	display: grid;
+	align-items: center;
+	text-align: center;
+	width: 1.8em;
+	height: 1.8em;
+	border: none;
+	border-radius: 14px;
+	font-size: 3.5em;
+}
+
+.letter-button {
+	background: #775411;
+	color: #e8d18c;
+}
+
+.number-button {
+	background: #775411;
+	color: #e8d18c;
+}
+
+.operation-button {
+	padding: 20px;
+	background: #775411;
+	color: #e8d18c;
+	border: none;
+	border-radius: 8px;
+	font-size: 2.5em;
+}
+
+#signal {
+	position: absolute;
+	top: 80px;
+	left: 30px;
+	padding: 20px;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	border: none;
+	background: #6a4602a1;
+	border-radius: 35px;
+	width: 180px;
+	text-align: center;
+}
+
+#signal-text {
+	color: white;
+	font-size: 2.2em;
+}
+
+/* ============================================================= */
+.mt-10 {
+	margin-top: 10px;
+}
+
+.mt-20 {
+	margin-top: 20px;
+}
+
+.mt-1e {
+	margin-top: 1em;
+}
+
+.mt-2e {
+	margin-top: 2em;
+}
+
+.mb-10 {
+	margin-bottom: 10px;
+}
+
+.mb-20 {
+	margin-bottom: 20px;
+}
+
+.mb-2e {
+	margin-bottom: 2em;
+}
+

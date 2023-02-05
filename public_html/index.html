@@ -1,0 +1,51 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="index.css">
+		<script type="text/javascript" src="index.js"></script> 
+	</head>
+
+	<body>
+
+		<div id="move-text" class="mb-2e">
+			<div id="move-text-inside">
+				e2e4
+			</div>
+		</div>
+
+		<div id="buttons">
+
+			<div class="buttons-row">
+				<div class="operation-button" onclick="sendMoveToServer()">SEND</div>
+				<div class="operation-button" onclick="clearText()">CLEAR</div>
+			</div>
+
+			<div class="buttons-row mt-2e">
+				<div class="button letter-button" onclick="insertChar('a')">A</div>
+				<div class="button letter-button" onclick="insertChar('b')">B</div>
+				<div class="button letter-button" onclick="insertChar('c')">C</div>
+				<div class="button letter-button" onclick="insertChar('d')">D</div>
+				<div class="button letter-button" onclick="insertChar('e')">E</div>
+				<div class="button letter-button" onclick="insertChar('f')">F</div>
+				<div class="button letter-button" onclick="insertChar('g')">G</div>
+				<div class="button letter-button" onclick="insertChar('h')">H</div>
+			</div>
+
+			<div class="buttons-row mt-2e">
+				<div class="button number-button" onclick="insertChar('1')">1</div>
+				<div class="button number-button" onclick="insertChar('2')">2</div>
+				<div class="button number-button" onclick="insertChar('3')">3</div>
+				<div class="button number-button" onclick="insertChar('4')">4</div>
+				<div class="button number-button" onclick="insertChar('5')">5</div>
+				<div class="button number-button" onclick="insertChar('6')">6</div>
+				<div class="button number-button" onclick="insertChar('7')">7</div>
+				<div class="button number-button" onclick="insertChar('7')">8</div>
+			</div>
+		</div>
+
+		<!-- Notificarea -->
+		<div id="signal">
+			<div id="signal-text">Player</div>
+		</div>
+
+	</body>
+</html>
