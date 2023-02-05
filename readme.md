@@ -13,3 +13,23 @@ pip install stockfish
 
 ## Testing
 test_stockfish_wrapper.py is standalone python script that can take turns to play a game of chess against the engine
+
+## Running
+### Server
+pyenv activate stockfish
+python server.py
+### Client
+To nginx configuration /etc/nginx/nginx.conf should add:
+```
+server {
+    listen 8080;
+    root /home/alex/projects/python/stockfish/public_html;
+    
+    location /stockfishserver {
+   	 proxy_pass http://localhost:5001;
+    }
+
+}
+```
+server nginx start
+go to http://localhost:8080
