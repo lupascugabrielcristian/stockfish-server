@@ -4,6 +4,19 @@ var state = {
 	cpOptions: ""
 }
 
+function showLED() {
+	return {
+		good: () => {
+			document.getElementById("led").classList.remove("led-red");
+			document.getElementById("led").classList.add("led-green");
+		},
+		bad: () => {
+			document.getElementById("led").classList.remove("led-green");
+			document.getElementById("led").classList.add("led-red");
+		}
+	}
+}
+
 function insertChar( textToAdd ) {
 	// Daca este playerul, doar modific textul
 	if ( state.isPlayer == 1 ) { 
@@ -14,15 +27,22 @@ function insertChar( textToAdd ) {
 	else {
 		// Daca nu este playerul, trimit CP move
 		var option = parseInt(textToAdd) - 1;
-		var optionsArr = state.cpOptions.split(",");
-		var optionText = optionsArr[option];
-		sendCPMove( optionText );
+		if ( !!option  && option < 3 ) {
+			var optionsArr = state.cpOptions.split(",");
+			var optionText = optionsArr[option];
+			sendCPMove( optionText );
+			showLED().good();
+		}
+		else {
+			document.getElementById("signal-text").innerText = "Input!"
+			showLED().bad();
+		}
 	}
 }
 
 function clearText() {
-	console.log("dfasdfasdf");
 	document.getElementById("move-text-inside").innerText = "";
+	showLED().good();
 }
 
 function sendMoveToServer() {
@@ -32,7 +52,9 @@ function sendMoveToServer() {
 			return response.json();
 		})
 		.then( (responseJson) => {
-			if ( responseJson['move_ok'] ) {
+			if ( responseJson['move_ok'] == "True") {
+				showLED().good();
+
 				// Userul a facut o mutare
 				var cpOptions = responseJson['cp_options']
 				var optionsText = "";
@@ -57,6 +79,7 @@ function sendMoveToServer() {
 			else {
 				// Nu a mers mutarea aleasa
 				document.getElementById("signal-text").innerText = "Player!"
+				showLED().bad();
 			}
 		});
 }
@@ -68,10 +91,26 @@ function sendCPMove(moveText) {
 		})
 		.then( (responseJson) => {
 			if ( responseJson['result'] == "ok" ) {
+				showLED().good();
+
 				// Ecranul
 				document.getElementById("signal-text").innerText = "Player"
 				document.getElementById("move-text-inside").innerText = "";
 				state.isPlayer = 1;
 			}
 		});
+}
+
+function newGame() {
+	fetch('/stockfishserver/newgame/').then( (response) => {
+		return response.json();
+	})
+	.then( (responseJson) => {
+		if ( responseJson['restart'] == "ok" ) {
+			document.getElementById("signal-text").innerText = "Restart";
+			document.getElementById("move-text-inside").innerText = "e2e4";
+			state.isPlayer = 1;
+			showLED().good();
+		}
+	});
 }

@@ -77,6 +77,24 @@ body {
 	font-size: 2.2em;
 }
 
+#led {
+	position: absolute;
+	top: 80px;
+	right: 40px;
+	width: 20px;
+	height: 20px;
+	border: none;
+	border-radius: 10px;
+}
+
+.led-green {
+	background: #0cff0c;
+}
+
+.led-red {
+	background: red;
+}
+
 /* ============================================================= */
 .mt-10 {
 	margin-top: 10px;

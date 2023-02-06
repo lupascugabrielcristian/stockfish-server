@@ -4,7 +4,8 @@ from gevent.pywsgi import WSGIServer
 from stockfish import Stockfish
 
 
-stockfish = Stockfish(path="/home/alex/apps/stockfish/stockfish_15.1_linux_x64/stockfish-ubuntu-20.04-x86-64", depth=2, parameters={
+stockfish_binary_path = "/home/alex/apps/stockfish/stockfish_15.1_linux_x64/stockfish-ubuntu-20.04-x86-64"
+stockfish_params = {
     "Debug Log File": "",
     "Contempt": 0,
     "Min Split Depth": 0,
@@ -19,16 +20,20 @@ stockfish = Stockfish(path="/home/alex/apps/stockfish/stockfish_15.1_linux_x64/s
     "UCI_Chess960": "false",
     "UCI_LimitStrength": "false",
     "UCI_Elo": 1350
-})
+}
+stockfish = Stockfish(path=stockfish_binary_path, depth=2, parameters=stockfish_params)
+next_move_from_start = 1
 
 app = Flask(__name__)
 
 @app.route('/stockfishserver/newgame/')
 def new_game():
+    global next_move_from_start
     """
     To send to engine the command to reset the board position
     """
-    pass
+    next_move_from_start = 1
+    return { 'restart': 'ok' }
 
 @app.route('/stockfishserver/mymove/<string:move>/')
 def send_my_move(move: str):
@@ -39,10 +44,18 @@ def send_my_move(move: str):
         cp_options: List of string representing move options for the engine
         move_ok: If the move is not possible this will be false
     """
-    if not stockfish.is_move_correct(move):
-        return { 'cp_options': [], 'move_ok': 'False' }
+    global next_move_from_start
 
-    stockfish.make_moves_from_current_position([move])
+    # Check if new game
+    if next_move_from_start == 1:
+        next_move_from_start = 0
+        stockfish.set_position([move])
+    else:
+        if not stockfish.is_move_correct(move):
+            return { 'cp_options': [], 'move_ok': 'False' }
+
+        stockfish.make_moves_from_current_position([move])
+
     # Get cp move options
     # A list of {'Move': 'f5d7', 'Centipawn': 713, 'Mate': None}. Mate is possibly 1
     options = []
