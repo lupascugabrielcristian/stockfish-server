@@ -2,6 +2,7 @@ import os
 from flask import Flask
 from gevent.pywsgi import WSGIServer
 from stockfish import Stockfish
+from datetime import datetime
 
 
 stockfish_binary_path = "/home/alex/apps/stockfish/stockfish_15.1_linux_x64/stockfish-ubuntu-20.04-x86-64"
@@ -70,6 +71,19 @@ def send_cp_move(move: str):
     """
     stockfish.make_moves_from_current_position([move])
     return { 'result': 'ok' }
+
+
+@app.route('/stockfishserver/verybadmove/<string:passw>/')
+def very_bad_move(passw: str):
+    """
+    Endpoint-ul care l-am pus pe prima pagina sa vad daca cineva acceseaza
+    """
+    ddate = str(datetime.now())
+    to_add = passw.ljust(20) + " at " + ddate + "\n"
+    with open("verybadmove.txt", "a") as v:
+        v.write(to_add)
+    return { 'result': 'ok' }
+
 
 
 if __name__== '__main__':

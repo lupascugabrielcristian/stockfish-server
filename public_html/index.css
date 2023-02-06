@@ -124,3 +124,45 @@ body {
 	margin-bottom: 2em;
 }
 
+
+/* ============================================================= */
+.mbody {
+	background: #332b2b;
+}
+
+.a2 {
+	display: grid;
+	align-items: center;
+	text-align: center;
+	justify-content: center;
+	height: 100vh;
+	color: #e1d1bc;
+	font-family: "sans-serif";
+}
+
+.inside {
+	display: grid;
+	row-gap: 10px;
+	height: 120px;
+}
+
+#pas {
+	height: 33px;
+}
+
+.label {
+	font-size: 14px;
+	text-align: left;
+}
+
+.submit {
+	display: grid;
+	align-items: center;
+	justify-content: center;
+	background: #5b0451;
+	border: none;
+	border-radius: 7px;
+	color: aliceblue;
+	padding: 20px;
+	cursor: pointer;
+}
