@@ -26,8 +26,9 @@ function insertChar( textToAdd ) {
 	}
 	else {
 		// Daca nu este playerul, trimit CP move
-		var option = parseInt(textToAdd) - 1;
-		if ( !!option  && option < 3 ) {
+		var option = parseInt(textToAdd);
+		if ( !!option  && option < 4 ) {
+			option = option - 1;
 			var optionsArr = state.cpOptions.split(",");
 			var optionText = optionsArr[option];
 			sendCPMove( optionText );
