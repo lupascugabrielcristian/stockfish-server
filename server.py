@@ -1,11 +1,16 @@
 import os
+import sys
 from flask import Flask
 from gevent.pywsgi import WSGIServer
 from stockfish import Stockfish
 from datetime import datetime
 
+if len(sys.argv) != 2:
+    print("Need to pass absolute path for stockfish binary")
+    exit(1)
 
-stockfish_binary_path = "/home/alex/apps/stockfish/stockfish_15.1_linux_x64/stockfish-ubuntu-20.04-x86-64"
+# Path is "/home/alex/apps/stockfish/stockfish_15.1_linux_x64/stockfish-ubuntu-20.04-x86-64"
+stockfish_binary_path = sys.argv[1]
 stockfish_params = {
     "Debug Log File": "",
     "Contempt": 0,
