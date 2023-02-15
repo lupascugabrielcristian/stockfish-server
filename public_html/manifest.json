@@ -1,0 +1,18 @@
+{
+	"app" : {
+		"scrips": ["index.js"]
+	}
+},
+"manifest-version": 2,
+"name": "My Chess",
+"version": "1.0.0",
+"icons": {
+	"16": "icon16.png",
+	"48": "icon48.png",
+	"128": "icon128.png"
+},
+
+{
+	"_src": "https://developer.chrome.com/docs/extensions/mv2/manifest/icons/",
+	"_src": "https://developer.mozilla.org/en-US/docs/Web/Manifest/shortcuts"
+}
