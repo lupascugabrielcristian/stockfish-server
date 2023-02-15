@@ -64,23 +64,31 @@ body {
 	font-size: 2.5em;
 }
 
-#signal {
+.signal {
 	position: absolute;
-	top: 80px;
+	top: 70px;
 	left: 30px;
-	padding: 20px;
-	padding-top: 30px;
-	padding-bottom: 30px;
+	padding: 15px;
 	border: none;
-	background: #6a4602a1;
-	border-radius: 35px;
+	background: #3e2c09c2;
+	border-radius: 25px;
 	width: 180px;
 	text-align: center;
 }
 
-#signal-text {
-	color: white;
-	font-size: 2.2em;
+#signal1 {
+	top: 60px;
+	left: 30px;
+}
+
+#signal2 {
+	top: 60px;
+	left: 255px;
+}
+
+.signal-text {
+	color: #ffd65b;
+	font-size: 1.8em;
 }
 
 #led {

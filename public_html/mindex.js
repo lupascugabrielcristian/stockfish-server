@@ -35,7 +35,7 @@ function insertChar( textToAdd ) {
 			showLED().good();
 		}
 		else {
-			document.getElementById("signal-text").innerText = "Input!"
+			document.getElementById("signal-text-1").innerText = "Input!"
 			showLED().bad();
 		}
 	}
@@ -74,12 +74,15 @@ function sendMoveToServer() {
 				state.isPlayer = 0;
 
 				// Ecranul
-				document.getElementById("signal-text").innerText = "CP"
+				document.getElementById("signal-text-1").innerText = "CP"
 				document.getElementById("move-text-inside").innerText = optionsText;
+
+				// Signal2 afiseaza player last move
+				document.getElementById("signal-text-2").innerText = "P " + currentMoveText;
 			}
 			else {
 				// Nu a mers mutarea aleasa
-				document.getElementById("signal-text").innerText = "Player!"
+				document.getElementById("signal-text-1").innerText = "Player!"
 				showLED().bad();
 			}
 		});
@@ -95,8 +98,12 @@ function sendCPMove(moveText) {
 				showLED().good();
 
 				// Ecranul
-				document.getElementById("signal-text").innerText = "Player"
+				document.getElementById("signal-text-1").innerText = "Player"
 				document.getElementById("move-text-inside").innerText = "";
+
+				// Signal2 afiseaza computer last move
+				document.getElementById("signal-text-2").innerText = "CP " + moveText;
+
 				state.isPlayer = 1;
 			}
 		});
@@ -108,7 +115,8 @@ function newGame() {
 	})
 	.then( (responseJson) => {
 		if ( responseJson['restart'] == "ok" ) {
-			document.getElementById("signal-text").innerText = "Restart";
+			document.getElementById("signal-text-1").innerText = "Restart";
+			document.getElementById("signal-text-2").innerText = "-";
 			document.getElementById("move-text-inside").innerText = "e2e4";
 			state.isPlayer = 1;
 			showLED().good();
