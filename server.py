@@ -70,7 +70,9 @@ def send_cp_move(move: str):
     Sends the next engine move. Will respond with "ok" if the move was sucessfully made, "mate"/"draw"/"check" for corresponding options
     """
     stockfish.make_moves_from_current_position([move])
-    return { 'result': 'ok' }
+    piece_string = str(stockfish.get_what_is_on_square(move[-2:]))
+    result_piece = piece_string.replace("WHITE_", "").replace("BLACK_", "")[0]
+    return { 'result': 'ok', 'piece': result_piece }
 
 
 @app.route('/stockfishserver/verybadmove/<string:passw>/')

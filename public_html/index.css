@@ -73,7 +73,10 @@ body {
 	background: #3e2c09c2;
 	border-radius: 25px;
 	width: 180px;
+	height: 30px;
 	text-align: center;
+	display: grid;
+	place-content: center;
 }
 
 #signal1 {
@@ -89,6 +92,10 @@ body {
 .signal-text {
 	color: #ffd65b;
 	font-size: 1.8em;
+}
+
+#signal-text-2 {
+	font-size: 1.3em;
 }
 
 #led {

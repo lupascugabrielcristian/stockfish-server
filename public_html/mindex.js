@@ -78,7 +78,7 @@ function sendMoveToServer() {
 				document.getElementById("move-text-inside").innerText = optionsText;
 
 				// Signal2 afiseaza player last move
-				document.getElementById("signal-text-2").innerText = "P " + currentMoveText;
+				document.getElementById("signal-text-2").innerText = "Pl " + currentMoveText;
 			}
 			else {
 				// Nu a mers mutarea aleasa
@@ -102,7 +102,7 @@ function sendCPMove(moveText) {
 				document.getElementById("move-text-inside").innerText = "";
 
 				// Signal2 afiseaza computer last move
-				document.getElementById("signal-text-2").innerText = "CP " + moveText;
+				document.getElementById("signal-text-2").innerText = "CP [" + responseJson['piece'] + "] " + moveText;
 
 				state.isPlayer = 1;
 			}
