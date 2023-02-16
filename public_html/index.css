@@ -15,11 +15,12 @@ body {
 	margin-bottom: 60px;
 	border: none;
 	border-radius: 20px;
-	height: 22em;
 }
 
 #move-text-inside {
 	font-size: 5em;
+	margin-top: 92px;
+	margin-bottom: 50px;
 }
 
 .buttons-row {
