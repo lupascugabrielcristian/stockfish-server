@@ -21,6 +21,9 @@ body {
 	font-size: 5em;
 	margin-top: 92px;
 	margin-bottom: 50px;
+	height: 280px;
+	display: grid;
+	place-content: center;
 }
 
 .buttons-row {
