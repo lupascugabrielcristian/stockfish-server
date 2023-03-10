@@ -5,11 +5,12 @@ The use of this is to play chess on a board vs stockfish chess engine without a 
 A small flask web server will send and receive moves and commands to the Stockfish engine. If is the case nginx proxy server will be put in place before the web server. This should run on local wifi network but also on a dedicated server out on the internet. In that case is recomended to use the proxy with SSL on. This server is supossed to work together with any kind of a small interface where one can type his move and the computer move
 
 ## Setup
-pyenv install -v 3.8.0
-pyenv virtualenv 3.8.0 stockfish
+* To install pyenv vezi [[pyenv]]
+pyenv install -v 3.9.12
+pyenv virtualenv 3.9.12 stockfish
 pyenv activate stockfish
 pip install --upgrade pip
-pip install stockfish
+pip install -r requirements.txt
 
 ## Testing
 test_stockfish_wrapper.py is standalone python script that can take turns to play a game of chess against the engine
@@ -17,7 +18,7 @@ test_stockfish_wrapper.py is standalone python script that can take turns to pla
 ## Running
 ### Server
 pyenv activate stockfish
-python server.py
+python server.py [path to stockfish binary]
 ### Client
 To nginx configuration /etc/nginx/nginx.conf should add:
 ```
